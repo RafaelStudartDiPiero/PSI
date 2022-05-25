@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Novo Serviço{% endblock title %}
+
+{% block content %}
+
+<h1>Adicionar Serviço</h1>
+
+<form method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-secondary">Criar</button>
+
+</form>
+
+{% endblock content %}
