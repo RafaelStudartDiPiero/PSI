@@ -1,0 +1,36 @@
+[
+    {
+        "model": "services.category",
+        "pk": 1,
+        "fields": {
+            "created": "2020-11-29T19:48:50.913Z",
+            "modified": "2020-11-29T19:48:50.913Z",
+            "name": "Entregas",
+            "slug": "entregas"
+        }
+    },
+    {
+        "model": "services.category",
+        "pk": 2,
+        "fields": {
+            "created": "2020-11-29T19:48:53.913Z",
+            "modified": "2020-11-29T19:48:53.913Z",
+            "name": "Conserto",
+            "slug": "conserto"
+        }
+    },
+    {
+        "model": "services.service",
+        "pk": 1,
+        "fields": {
+            "created": "2020-11-29T22:08:23.477Z",
+            "modified": "2020-11-29T22:08:23.477Z",
+            "category": 1,
+            "name": "Entrega açaí",
+            "slug": "entrega-acai",
+            "description": "Traz meu açai bixo imundo",
+            "price": "0.01",
+            "is_available": true
+        }
+    }
+]

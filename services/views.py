@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, CreateView
 
 from .models import Category, Service
 
@@ -27,3 +27,10 @@ class ServiceListView(ListView):
         context["category"] = self.category
         context["categories"] = Category.objects.all()
         return context
+
+
+class AddServiceView(CreateView):
+    model = Service
+    template_name = 'service_add.html'
+    fields = '__all__'
+
