@@ -39,12 +39,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # apps de terceiros
+
 
     # My Apps
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
     "services.apps.ServicesConfig",
+
+    # 3rd Party
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -144,5 +152,16 @@ AUTH_USER_MODEL = "users.User"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# django-allauth
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+# django-crispy-forms
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
