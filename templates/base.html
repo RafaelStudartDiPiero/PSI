@@ -24,12 +24,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'account_logout' %}" class="nav-link lead mr-4 font-weight-bold" >Sair</a>
+                    </li>
                     <li class="nav-item">
                         <a href="{% url 'services:add' %}" class="nav-link lead mr-4 font-weight-bold">Novo Serviço</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'services:list' %}" class="nav-link lead mr-4 font-weight-bold">Serviços</a>
                     </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_login' %}">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_signup' %}">Cadastro</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a href="{% url 'pages:about' %}" class="nav-link lead mr-4 font-weight-bold">Sobre Nós</a>
                     </li>
@@ -50,4 +62,4 @@
 
 </body>
 
-</html
+</html>
