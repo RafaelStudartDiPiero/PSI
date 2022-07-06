@@ -29,6 +29,9 @@
                         <a href="{% url 'account_logout' %}" class="nav-link lead mr-4 font-weight-bold" >Sair</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{% url 'users:profile_page' user.id %}" class="nav-link lead mr-4 font-weight-bold" >Perfil</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{% url 'services:add' %}" class="nav-link lead mr-4 font-weight-bold">Novo Serviço</a>
                     </li>
                     <li class="nav-item">
