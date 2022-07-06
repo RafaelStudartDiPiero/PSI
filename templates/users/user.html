@@ -17,10 +17,6 @@
     {% else %}
         Email Não Informado
     {% endif %}
-    <br>
-    <a class="text-decoration-none" href="{{ page_user.get_rating_url }}">
-        Avaliações
-    </a>
 
     {% if page_user == user %}
     <form action="{% url 'pages:submit_review' page_user.id %}" method="POST">
@@ -29,7 +25,7 @@
         <h5>Write Your Review</h5>
         <div>
 
-            <label>How do you rate this product></label>
+            <label>How do you rate this product?</label>
             <br>
             <div class="rate">
                 <input type="radio" name="rating" id="rating10" value="5" required /><label for="rating10" title="5"></label>
@@ -60,7 +56,37 @@
     {% endif %}
 
 </div>
+<br>
+<header class="section-heading">
+	<h3>Customer Reviews </h3>
+</header>
 
+{% for review in reviews %}
+				<article class="box mb-3">
+					<div class="icontext w-100">
+
+						<div class="text">
+							<span class="date text-muted float-md-right">{{review.updated_at}} </span>
+							<h6 class="mb-1">{{review.user.full_name}} </h6>
+							<div class="rating-star">
+								<span>
+									<i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
+								</span>
+							</div>
+						</div>
+					</div> <!-- icontext.// -->
+					<div class="mt-3">
+						<h6>{{review.subject}}</h6>
+						<p>
+							{{review.review}}
+						</p>
+					</div>
+				</article>
+{% endfor %}
 
 
 

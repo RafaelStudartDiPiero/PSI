@@ -8,6 +8,7 @@ from services.models import Service, ReviewRating
 class ProfileDetailView(DetailView):
     model = User
     template_name = 'users/user.html'
+    reviews = None
 
     def get_context_data(self, **kwargs):
         users = User.objects.all()
@@ -16,8 +17,12 @@ class ProfileDetailView(DetailView):
         page_user = get_object_or_404(User, id=self.kwargs['pk'])
 
         context["page_user"] = page_user
+        context["reviews"] = ReviewRating.objects.filter(rated_id=page_user.id, status=True)
+
 
         return context
+
+
 
 
 class ProfileListView(ListView):
@@ -29,17 +34,3 @@ class ProfileListView(ListView):
 
         return queryset
 
-class RatingListView(ListView):
-    category = None
-    paginate_by = 12
-    template_name = 'users/rating_list.html'
-
-    def get_queryset(self):
-        queryset = ReviewRating.objects.all()
-
-        rated_id = self.kwargs.get("rated.id")
-        if rated_id:
-            self.rated = get_object_or_404(User, id=rated_id)
-            queryset = queryset.filter(rated=self.rated)
-
-        return queryset
