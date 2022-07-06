@@ -19,6 +19,11 @@
             <h1 class="font-weight-bold">{{ service.name }}</h1>
             <h2>R$ {{ service.price }}</h2>
             <p>{{ service.description }}</p>
+            <p>Criado por
+                <a class="text-decoration-none" href="{{ service.get_profile_url }}">
+                    {{ service.author }}
+                </a>
+            </p>
             <p>
                 Voltar para o catálogo de
                 <a class="text-decoration-none" href="{{ service.category.get_absolute_url }}">
