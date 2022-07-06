@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Service
+from .models import Category, Service, ReviewRating
 
 
 @admin.register(Category)
@@ -21,3 +21,5 @@ class ProductAdmin(admin.ModelAdmin):
     ]
     list_filter = ["is_available", "created", "modified"]
     list_editable = ["price", "is_available"]
+
+admin.site.register(ReviewRating)
