@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 
 from .models import User
 from services.models import Service
@@ -18,3 +18,13 @@ class ProfileDetailView(DetailView):
         context["page_user"] = page_user
 
         return context
+
+
+class ProfileListView(ListView):
+    category = None
+    paginate_by = 6
+
+    def get_queryset(self):
+        queryset = User.objects.all()
+
+        return queryset
