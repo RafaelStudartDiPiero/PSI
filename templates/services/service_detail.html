@@ -30,6 +30,13 @@
                     {{ service.category.name }}
                 </a>
             </p>
+            {% if user.id == service.author.id %}
+            <p>
+                <a class="text-decoration-none" href="{{ service.get_update_url }}">
+                    Atualizar
+                </a>
+            </p>
+            {% endif %}
         </div>
     </div>
 </div>

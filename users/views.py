@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
 
 from .models import User
+from services.models import Service
 
 
 class ProfileDetailView(DetailView):
@@ -15,4 +16,5 @@ class ProfileDetailView(DetailView):
         page_user = get_object_or_404(User, id=self.kwargs['pk'])
 
         context["page_user"] = page_user
+
         return context
