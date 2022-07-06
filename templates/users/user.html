@@ -17,7 +17,12 @@
     {% else %}
         Email Não Informado
     {% endif %}
-    {% if page_user.id != user.id %}
+    <br>
+    <a class="text-decoration-none" href="{{ page_user.get_rating_url }}">
+        Avaliações
+    </a>
+
+    {% if page_user == user %}
     <form action="{% url 'pages:submit_review' page_user.id %}" method="POST">
         {% csrf_token %}
         <br>

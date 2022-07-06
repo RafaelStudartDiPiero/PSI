@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView
 
 from .models import User
-from services.models import Service
+from services.models import Service, ReviewRating
 
 
 class ProfileDetailView(DetailView):
@@ -22,9 +22,24 @@ class ProfileDetailView(DetailView):
 
 class ProfileListView(ListView):
     category = None
-    paginate_by = 6
+    paginate_by = 12
 
     def get_queryset(self):
         queryset = User.objects.all()
+
+        return queryset
+
+class RatingListView(ListView):
+    category = None
+    paginate_by = 12
+    template_name = 'users/rating_list.html'
+
+    def get_queryset(self):
+        queryset = ReviewRating.objects.all()
+
+        rated_id = self.kwargs.get("rated.id")
+        if rated_id:
+            self.rated = get_object_or_404(User, id=rated_id)
+            queryset = queryset.filter(rated=self.rated)
 
         return queryset
