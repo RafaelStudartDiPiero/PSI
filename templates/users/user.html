@@ -4,6 +4,20 @@
 
 {% block content %}
 
-{{page_user}}
+<div class="container my-3">
+    <h1 class="font-weight-bold">Usuário</h1>
+    <p>
+        {{page_user.username}}
+    </p>
+    <h1 class="font-weight-bold">Email</h1>
+    {% if page_user.email != '' %}
+    <p>
+        {{page_user.email}}
+    </p>
+    {% else %}
+        Email Não Informado
+    {% endif %}
+
+</div>
 
 {% endblock content %}

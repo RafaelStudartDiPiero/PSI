@@ -12,7 +12,7 @@ class ProfileDetailView(DetailView):
         users = User.objects.all()
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
 
-        page_user = get_object_or_404(User, id =self.kwargs['pk'])
+        page_user = get_object_or_404(User, id=self.kwargs['pk'])
 
         context["page_user"] = page_user
         return context
