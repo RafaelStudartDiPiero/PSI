@@ -48,7 +48,13 @@ class Service(TimeStampedModel):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("services:detail", kwargs={"slug": self.slug})
+        if self.is_available:
+            return reverse("services:detail", kwargs={"slug": self.slug})
+        else:
+            return reverse("services:list")
 
     def get_profile_url(self):
         return reverse("users:profile_page", kwargs={"pk": self.author.id})
+
+    def get_update_url(self):
+        return reverse("services:update", kwargs={"slug": self.slug})
